@@ -1,73 +1,184 @@
-# Welcome to your Lovable project
+# 🍽️ All You Can Eat - Restaurant Management System
 
-## Project info
+Sistem manajemen restoran modern untuk pelayanan All You Can Eat dengan QR code, timer otomatis, dan monitoring real-time.
 
-**URL**: https://lovable.dev/projects/1e4e1e45-afe7-45b2-b35d-7f2e43bea098
+## ✨ Fitur Utama
 
-## How can I edit this code?
+### 🔐 Admin Dashboard
+- **Login Protection**: Sistem login sederhana untuk melindungi dashboard admin
+- **QR Code Generator**: Generate QR code unik untuk setiap meja pelanggan
+- **Real-time Monitoring**: Pantau semua pelanggan aktif dalam satu dashboard
+- **Notifikasi Otomatis**: Alert popup ketika waktu pelanggan habis
+- **Statistik Live**: Lihat jumlah pelanggan aktif, expired, dan total hari ini
 
-There are several ways of editing your application.
+### 📱 Customer Experience
+- **QR Code Scanner**: Pelanggan scan QR code untuk akses timer
+- **Countdown Timer**: Timer visual 90 menit dengan progress bar circular
+- **Status Alerts**: Notifikasi saat sisa waktu 15 menit dan 5 menit
+- **Responsive Design**: Optimal di semua perangkat mobile dan desktop
+- **Offline Indicator**: Indikator koneksi internet untuk reliability
 
-**Use Lovable**
+### 🔔 Smart Notifications
+- **Auto Popup**: Notifikasi otomatis di dashboard admin saat waktu habis
+- **Sound Alert**: Notifikasi suara untuk menarik perhatian staff
+- **Table Identification**: Identifikasi jelas nomor meja yang expired
+- **One-time Show**: Notifikasi hanya muncul sekali per expired session
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1e4e1e45-afe7-45b2-b35d-7f2e43bea098) and start prompting.
+## 🚀 Cara Penggunaan
 
-Changes made via Lovable will be committed automatically to this repo.
+### 1. **Admin Login**
+- Akses `/admin` 
+- Username: `admin`
+- Password: `restaurant123`
 
-**Use your preferred IDE**
+### 2. **Generate QR Code**
+- Di dashboard admin, masukkan nomor meja
+- Klik "Buat QR Code"
+- Download atau tunjukkan QR code ke pelanggan
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 3. **Customer Timer**
+- Pelanggan scan QR code
+- Timer 90 menit dimulai otomatis
+- Monitor sisa waktu secara real-time
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 4. **Admin Monitoring**
+- Pantau semua pelanggan aktif
+- Dapatkan notifikasi otomatis saat waktu habis
+- Kelola status pelanggan (selesai manual jika diperlukan)
 
-Follow these steps:
+## 🛠️ Teknologi yang Digunakan
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- **Frontend**: React 18 + TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui
+- **QR Code**: qrcode library
+- **Storage**: localStorage (untuk demo)
+- **Routing**: React Router DOM
+- **State Management**: React Hooks
+- **Build Tool**: Vite
+- **Icons**: Lucide React
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🎨 Design System
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Color Palette
+- **Primary**: Warm orange (#FF6B35) - Restaurant branding
+- **Success**: Green - Active status
+- **Warning**: Yellow - Time warnings  
+- **Destructive**: Red - Expired status
+- **Muted**: Neutral grays - Supporting elements
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Typography
+- Clean, readable fonts
+- Proper contrast ratios
+- Responsive text sizing
+
+### Components
+- Consistent button variants
+- Beautiful card designs
+- Smooth animations and transitions
+- Mobile-first responsive design
+
+## 📋 File Structure
+
+```
+src/
+├── components/
+│   ├── auth/
+│   │   └── AdminLogin.tsx          # Login component
+│   ├── admin/
+│   │   ├── QRGenerator.tsx         # QR code generation
+│   │   └── CustomerTable.tsx       # Customer monitoring table
+│   ├── customer/
+│   │   └── CountdownTimer.tsx      # Customer timer view
+│   ├── notifications/
+│   │   └── NotificationModal.tsx   # Admin notifications
+│   └── ui/                         # shadcn/ui components
+├── pages/
+│   ├── Index.tsx                   # Landing page
+│   ├── AdminPage.tsx              # Admin login wrapper
+│   ├── AdminDashboard.tsx         # Main admin dashboard
+│   └── CustomerView.tsx           # Customer timer page
+├── hooks/
+│   └── useNotifications.ts        # Notification management
+├── utils/
+│   ├── storage.ts                 # localStorage utilities
+│   └── qrcode.ts                  # QR code utilities
+├── types/
+│   └── restaurant.ts              # TypeScript interfaces
+└── main.tsx                       # App entry point
+```
+
+## 🔧 Instalasi & Development
+
+### Prerequisites
+- Node.js 18+ dan npm
+
+### Setup
+```bash
+# Clone repository
+git clone <repository-url>
+cd restaurant-system
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Build untuk Production
+```bash
+# Build aplikasi
+npm run build
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+# Preview build
+npm run preview
+```
 
-**Use GitHub Codespaces**
+## 📱 URL Routes
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- `/` - Landing page dengan informasi sistem
+- `/admin` - Dashboard admin (butuh login)
+- `/customer/:customerId` - Timer countdown pelanggan
 
-## What technologies are used for this project?
+## 🔒 Security Features
 
-This project is built with:
+- **Session Management**: Login session dengan expiry 24 jam
+- **Route Protection**: Admin routes dilindungi authentication
+- **Input Validation**: Form validation untuk mencegah error
+- **XSS Protection**: Proper sanitization untuk user inputs
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🎯 Future Enhancements
 
-## How can I deploy this project?
+### Possible Improvements:
+1. **Backend Integration**: 
+   - Database real (PostgreSQL/MongoDB)
+   - REST API dengan Express.js
+   - WebSocket untuk real-time updates
 
-Simply open [Lovable](https://lovable.dev/projects/1e4e1e45-afe7-45b2-b35d-7f2e43bea098) and click on Share -> Publish.
+2. **Advanced Features**:
+   - Multiple restaurant support
+   - Advanced reporting & analytics
+   - Email/SMS notifications
+   - Payment integration
+   - Menu management
+   - Table reservation system
 
-## Can I connect a custom domain to my Lovable project?
+3. **Mobile App**:
+   - React Native customer app
+   - Push notifications
+   - Offline mode support
 
-Yes, you can!
+## 📞 Support
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Untuk bantuan teknis atau pertanyaan:
+- Buka issue di repository ini
+- Email: support@restaurant-system.com
+- Documentation: [Link to docs]
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📄 License
+
+© 2024 All You Can Eat Management System. All rights reserved.
+
+---
+
+**Dibuat dengan ❤️ untuk meningkatkan efisiensi pelayanan restoran modern.**
